@@ -117,7 +117,10 @@ export default function Events() {
             <Button variant="link" onClick={() => handleEventClick(event)}><Heading size={'md'} fontSize={'17'} fontWeight={400}>{event.title}</Heading></Button>
           </td>
           <td style={{  padding:'15px'}}>
-            <Button onClick={() => eventDeleteHandler(event)}>delete</Button>
+            <Button onClick={() => eventDeleteHandler(event)}>Delete</Button>
+          </td>
+          <td style={{  padding:'15px'}}>
+          <Button onClick={() => eventDeleteHandler(event)}>Update</Button>
           </td>
         </tr>
       )

@@ -101,7 +101,7 @@ a {
 }
 
 .card_hover:hover{
-  border: 3px solid var(--chakra-colors-chakra-body-bg);
+  border: 1px solid var(--chakra-colors-chakra-body-bg);
 }
 
 @media (prefers-color-scheme: dark) {

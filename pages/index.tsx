@@ -69,9 +69,9 @@ export default function Home() {
                 <Stack mt="1" spacing="3">
                   <Heading size="lg">Creating Events</Heading>
                   <Text>
-                    This sofa is perfect for modern tropical spaces, baroque
-                    inspired spaces, earthy toned spaces and for people who love
-                    a chic design with a sprinkle of vintage design.
+                  The key to creating a successful event is to think about your audience and what they want to get out of the experience.
+
+With the right team, resources, and vision, you can create an event that inspires, educates, and entertains your guests.
                   </Text>
                 </Stack>
               </CardBody>
@@ -86,9 +86,9 @@ export default function Home() {
                 <Stack mt="1" spacing="3">
                   <Heading size="lg">Inviting Attendees</Heading>
                   <Text>
-                    This sofa is perfect for modern tropical spaces, baroque
-                    inspired spaces, earthy toned spaces and for people who love
-                    a chic design with a sprinkle of vintage design.
+                  Consider using personalized invitations or special incentives to encourage attendance and make attendees feel valued.
+
+Finally, make sure to provide clear instructions on how attendees can RSVP and any additional details they need to know before attending.
                   </Text>
                 </Stack>
               </CardBody>
@@ -103,9 +103,11 @@ export default function Home() {
                 <Stack mt="1" spacing="3">
                   <Heading size="lg">Tracking RSVPs</Heading>
                   <Text>
-                    This sofa is perfect for modern tropical spaces, baroque
-                    inspired spaces, earthy toned spaces and for people who love
-                    a chic design with a sprinkle of vintage design.
+                  Tracking RSVPs is a crucial part of managing an event.
+
+Keeping track of RSVPs helps you plan and prepare for the right number of attendees.
+
+To track RSVPs, you can use different methods such as online registration forms, email responses, or phone calls.
                   </Text>
                 </Stack>
               </CardBody>
@@ -120,9 +122,9 @@ export default function Home() {
                 <Stack mt="1" spacing="3">
                   <Heading size="lg">Manage Events</Heading>
                   <Text>
-                    This sofa is perfect for modern tropical spaces, baroque
-                    inspired spaces, earthy toned spaces and for people who love
-                    a chic design with a sprinkle of vintage design.
+                  Managing an event involves overseeing all the different aspects of the event to ensure that everything runs smoothly.
+
+Some key tasks involved in managing events include setting a budget, securing a venue, arranging for vendors, and coordinating with speakers or performers.
                   </Text>
                 </Stack>
               </CardBody>
