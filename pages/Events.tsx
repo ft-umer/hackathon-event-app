@@ -120,7 +120,7 @@ export default function Events() {
             <Button onClick={() => eventDeleteHandler(event)}>Delete</Button>
           </td>
           <td style={{  padding:'15px'}}>
-          <Button onClick={() => eventDeleteHandler(event)}>Update</Button>
+          <Button>Update</Button>
           </td>
         </tr>
       )
