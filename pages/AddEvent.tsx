@@ -1,33 +1,22 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useState } from "react"
-import { useRouter  } from "next/router";
 import {
   Box,
-  Flex,
   Heading,
-  Text,
   Button,
-  Icon,
-  ButtonGroup,
-  Divider,
-  Stack,
-  Grid,
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
 } from "@chakra-ui/react";
-import Link from "next/link";
 import { Center } from "@chakra-ui/react";
 import { eventTypes } from "@/types/eventTypes";
-import { addDoc, collection, getDoc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/config/firebase";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function SignUp() {
-    const [event, setEvent] = useState<eventTypes>()
+    const [event, setEvent] = useState<eventTypes[]>([])
     const [title, setTitle] = useState<string>("")
     const [date, setDate] = useState<string>("")
     const [time, setTime] = useState<string>("")
