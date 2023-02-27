@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import {
   Box,
@@ -7,16 +6,12 @@ import {
   Heading,
   Text,
   Button,
-  Icon,
-  ButtonGroup,
-  Divider,
   Stack,
   Grid,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Center } from "@chakra-ui/react";
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
+import { Card, CardBody } from "@chakra-ui/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
