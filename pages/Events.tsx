@@ -83,6 +83,7 @@ export default function Events() {
   }
 
   return (
+    
     <>
       <Head>
         <title>Events</title>
@@ -114,7 +115,7 @@ export default function Events() {
       return (
         <tr key={event.id}>
           <td style={{  padding:'15px'}}>
-            <Button variant="link" onClick={() => handleEventClick(event)}><Heading size={'md'} fontSize={'17'} fontWeight={400}>{event.title}</Heading></Button>
+            <Button variant="link" onClick={() => handleEventClick(event)}><Heading size={'xl'} fontSize={'20'} padding={'10px'} borderRadius={'3px'} borderBottom={'2px var(--chakra-colors-chakra-body-bg) solid'} listStyleType={'none'} textDecoration={'none'} fontWeight={700}>{event.title}</Heading></Button>
           </td>
           <td style={{  padding:'15px'}}>
             <Button onClick={() => eventDeleteHandler(event)}>Delete</Button>

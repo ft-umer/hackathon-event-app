@@ -54,8 +54,9 @@ export default function SignUp() {
     }
 
 
+
   return (
-    <>
+    <>  
       <Head>
         <title>Sign Up</title>
       </Head>

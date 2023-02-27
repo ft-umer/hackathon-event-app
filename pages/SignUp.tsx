@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useState } from "react"
 import { useRouter  } from "next/router";
+import { toast } from "react-toastify";
 import {
   Box,
   Flex,
@@ -30,20 +31,37 @@ export default function SignUp() {
     const [password, setPassword] = useState("")
     const [loader, setLoader] = useState(false)
     const router = useRouter();
+    
 
     const handleSubmit = async () => {      
-        try {
-            setLoader(true);
-          await createUserWithEmailAndPassword(auth, email, password);
-          console.log("User created successfully");
-          router.push('/Login')
-        } catch (e) {
-          console.error(e);
+      try {
+        setLoader(true);
+        if (password.length < 6) {
+          // Show a toast message if the password is less than 6 characters
+          toast.error('Password should be at least 6 characters long' , {
+           position: toast.POSITION.TOP_CENTER
+          });
+          
+          return;
         }
-        finally{
-            setLoader(false)
-        }
-      };
+        if (email) {
+          toast.error('Email already exists' , {
+            position: toast.POSITION.TOP_CENTER
+           });
+           
+           return;
+ 
+        } 
+        await createUserWithEmailAndPassword(auth, email, password);
+        console.log("User created successfully");
+        router.push('/Login')
+      } catch (e) {
+        console.error(e);
+      }
+      finally{
+        setLoader(false)
+      }
+    };
   return (
     <>
       <Head>

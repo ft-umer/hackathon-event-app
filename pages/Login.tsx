@@ -35,19 +35,21 @@ export default function Login() {
     const [loader, setLoader] = useState(false)
     const router = useRouter();
 
-   const handleLogin =async()=>{
-    try {
+    const handleLogin = async () => {
+      try {
         setLoader(true);
-        await signInWithEmailAndPassword (auth, email, password);
+        await signInWithEmailAndPassword(auth, email, password);
         console.log("User LoggedIn successfully");
-        router.push('/')
-    } catch (error) {
-        console.log(error)
-    }
-    finally{
+        router.push("/");
+      } catch (error) {
+        console.log(error);
+        toast.error("Invalid email or password", {
+          position: toast.POSITION.TOP_CENTER
+        });
+      } finally {
         setLoader(false);
-    }
-   }
+      }
+    };
   return (
     <>
       <Head>
