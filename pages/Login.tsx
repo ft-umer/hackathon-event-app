@@ -80,9 +80,9 @@ export default function Login() {
                 <Input type="password" onChange={(e) => setPassword(e.target.value)} />
               </FormControl>
               
-              {loader ? <Button colorScheme="white" variant={'outline'} ml={0}>
+              {loader ? <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} ml={0}>
                 Loading...
-              </Button> :<Button colorScheme="white" variant={'outline'} onClick={handleLogin} ml={0}>
+              </Button> :<Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} onClick={handleLogin} ml={0}>
                 Login
               </Button>}
             </form>

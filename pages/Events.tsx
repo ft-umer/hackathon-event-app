@@ -114,10 +114,10 @@ export default function Events() {
               <thead>
                 <tr>
                   <th style={{ padding: "15px" }}>
-                    <Heading>Title Events</Heading>
+                    <Heading color={'white'}>Title Events</Heading>
                   </th>
                   <th style={{ padding: "15px" }} colSpan={2}>
-                    <Heading>Action</Heading>
+                    <Heading color={'white'}>Action</Heading>
                   </th>
                 </tr>
               </thead>
@@ -128,6 +128,7 @@ export default function Events() {
                       <td style={{ padding: "15px" }}>
                         <Button
                           variant="link"
+                          color={'white'}
                           onClick={() => handleEventClick(event)}
                         >
                           <Heading
@@ -136,23 +137,23 @@ export default function Events() {
                             padding={"10px"}
                             borderRadius={"3px"}
                             borderBottom={
-                              "2px var(--chakra-colors-chakra-body-bg) solid"
+                              "2px #141414 solid"
                             }
                             listStyleType={"none"}
                             textDecoration={"none"}
-                            fontWeight={700}
+                            fontWeight={600}
                           >
                             {event.title}
                           </Heading>
                         </Button>
                       </td>
                       <td style={{ padding: "15px" }}>
-                        <Button onClick={() => eventDeleteHandler(event)}>
+                        <Button fontWeight={'400'} backgroundColor={'#141414'} color={'white'} className={'btn_header'} onClick={() => eventDeleteHandler(event)}>
                           Delete
                         </Button>
                       </td>
                       <td style={{ padding: "15px" }}>
-                        <Button>Update</Button>
+                        <Button fontWeight={'400'} backgroundColor={'#141414'} color={'white'} className={'btn_header'}>Update</Button>
                       </td>
                     </tr>
                   );
@@ -169,7 +170,7 @@ export default function Events() {
           onClose={onClose}
         >
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent backgroundColor={'#141414'} color={'white'}>
             <ModalHeader>{selectedEvent.title}</ModalHeader>
             <ModalBody>
               <Text>
@@ -186,7 +187,7 @@ export default function Events() {
               </Text>
             </ModalBody>
             <ModalFooter>
-              <Button onClick={onClose} mr={3}>
+              <Button  backgroundColor={'#333'} color={'white'} className={'btn_popup'} onClick={onClose} mr={3}>
                 Close
               </Button>
             </ModalFooter>

@@ -86,13 +86,19 @@ body {
 }
 
 
-
 body {
-  color: rgb(var(--foreground-rgb));
+  color:white ;
   height: 100vh;
-  background-color: white;
+  background-color: #333 !important;
 }
 
+.btn_popup:hover{
+  background-color: #242424 !important;
+}
+
+.btn_header:hover{
+  background-color: #333 !important;
+}
 
 a {
   color: inherit;

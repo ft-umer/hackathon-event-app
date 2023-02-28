@@ -46,7 +46,7 @@ import {
       <Box
         bg={'black'}
         marginTop={'1'}
-        color={useColorModeValue('gray.700', 'gray.200')}>
+        color={'white'}>
         <Container
           as={Stack}
           maxW={'6xl'}

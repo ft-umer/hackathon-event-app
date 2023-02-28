@@ -58,7 +58,7 @@ export default function AppHeader() {
     <Box bg={"black"} p={"2"} marginBottom={"1"}>
       <Flex py={{ base: 2 }} px={{ base: 4 }} align={"center"}>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Heading>
+          <Heading color={'white'}>
             <Link href="/">Syed's Event</Link>
           </Heading>
         </Flex>
@@ -70,18 +70,18 @@ export default function AppHeader() {
           spacing={6}
         >
           <Link href="/Events">
-            <Button fontSize={"sm"} fontWeight={400}>
+            <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} fontSize={"sm"} fontWeight={400}>
               Events
             </Button>
           </Link>
 
           <Link href={"/Login"}>
-            <Button fontSize={"sm"} fontWeight={400}>
+            <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'}  fontSize={"sm"} fontWeight={400}>
               Sign In
             </Button>
           </Link>
           <Link href={"/SignUp"}>
-            <Button fontSize={"sm"} fontWeight={400}>
+            <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} fontSize={"sm"} fontWeight={400}>
               Sign Up
             </Button>
           </Link>

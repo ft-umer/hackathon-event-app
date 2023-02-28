@@ -96,7 +96,7 @@ export default function SignUp() {
                 <Input type="password" onChange={(e) => setPassword(e.target.value)} />
               </FormControl>
               
-              {loader ? <Button colorScheme="white" variant={'outline'} ml={0}>Loading...</Button> : <Button onClick={handleSubmit} colorScheme="white" variant={'outline'} ml={0}>
+              {loader ? <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} ml={0}>Loading...</Button> : <Button onClick={handleSubmit} backgroundColor={'#141414'} color={'white'} className={'btn_header'} ml={0}>
                 Sign Up
               </Button>}
             </form>

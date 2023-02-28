@@ -22,7 +22,7 @@ export default function Home() {
         <title>My Event App</title>
       </Head>
 
-      <Box bg="black" py={{ base: "10", md: "20" }}>
+      <Box bg="black" color="white" py={{ base: "10", md: "20" }}>
         <Center>
           <Box maxW="600px" padding={"4px"} margin={"6px"} textAlign="center">
             <Heading
@@ -58,7 +58,8 @@ export default function Home() {
               className={"card_hover"}
               maxW="xl"
               bg={"black"}
-              border={"2px solid var(--chakra-colors-chakra-body-bg);"}
+              border={"2px solid #333;"}
+              color={'white'}
             >
               <CardBody>
                 <Stack mt="1" spacing="3">
@@ -75,7 +76,8 @@ With the right team, resources, and vision, you can create an event that inspire
               className={"card_hover"}
               maxW="xl"
               bg={"black"}
-              border={"2px solid var(--chakra-colors-chakra-body-bg);"}
+              border={"2px solid #333;"}
+              color={'white'}
             >
               <CardBody>
                 <Stack mt="1" spacing="3">
@@ -92,7 +94,8 @@ Finally, make sure to provide clear instructions on how attendees can RSVP and a
               className={"card_hover"}
               maxW="xl"
               bg={"black"}
-              border={"2px solid var(--chakra-colors-chakra-body-bg);"}
+              border={"2px solid #333;"}
+              color={'white'}
             >
               <CardBody>
                 <Stack mt="1" spacing="3">
@@ -111,7 +114,8 @@ To track RSVPs, you can use different methods such as online registration forms,
               className={"card_hover"}
               maxW="xl"
               bg={"black"}
-              border={"2px solid var(--chakra-colors-chakra-body-bg);"}
+              border={"2px solid #333;"}
+              color={'white'}
             >
               <CardBody>
                 <Stack mt="1" spacing="3">
