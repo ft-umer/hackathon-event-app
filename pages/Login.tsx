@@ -8,47 +8,47 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { Center } from "@chakra-ui/react";
-import { useState } from "react"
-import { useRouter  } from "next/router";
-import {auth, signInWithEmailAndPassword } from "config/firebase"
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { auth, signInWithEmailAndPassword } from "config/firebase";
 import { toast } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loader, setLoader] = useState(false);
+  const router = useRouter();
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [loader, setLoader] = useState(false)
-    const router = useRouter();
-
-    const handleLogin = async () => {
-      try {
-        setLoader(true);
-        await signInWithEmailAndPassword(auth, email, password);
-        console.log("User LoggedIn successfully");
-        router.push("/");
-      } catch (error) {
-        console.log(error);
-        toast.error("Invalid email or password", {
-          position: toast.POSITION.TOP_CENTER
-        });
-      } finally {
-        setLoader(false);
-      }
-    };
+  const handleLogin = async () => {
+    try {
+      setLoader(true);
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log("User LoggedIn successfully");
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("Invalid email or password", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } finally {
+      setLoader(false);
+    }
+  };
   return (
     <>
       <Head>
         <title>Login</title>
       </Head>
 
-      <Box bg="black" height={'100vh'}>
+      <Box bg="black" height={"100vh"}>
         <Center>
           <Box maxW="600px" p={4} m={6} textAlign="center">
             <Heading
-            py={{ base: "10" }}
+              py={{ base: "10" }}
               as="h1"
               size="3xl"
               fontFamily="heading"
@@ -61,18 +61,48 @@ export default function Login() {
             <form>
               <FormControl id="email" mb={4}>
                 <FormLabel color="white">Email :</FormLabel>
-                <Input type="email" onChange={(e) => setEmail(e.target.value)} />
+                <Input
+                  type="email"
+                  placeholder="abc@xyz.com"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </FormControl>
               <FormControl id="password" mb={4}>
                 <FormLabel color="white">Password :</FormLabel>
-                <Input type="password" onChange={(e) => setPassword(e.target.value)} />
+                <Input
+                  type="password"
+                  placeholder="********"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </FormControl>
-              
-              {loader ? <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} ml={0}>
-                Loading...
-              </Button> :<Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} onClick={handleLogin} ml={0}>
-                Login
-              </Button>}
+              <Box marginBottom={"5"} color={"white"}>
+                <p>
+                Don't having an account?__
+                  <Link href="/SignUp">
+                    Sign Up
+                  </Link>
+                </p>
+              </Box>
+              {loader ? (
+                <Button
+                  backgroundColor={"#141414"}
+                  color={"white"}
+                  className={"btn_header"}
+                  ml={0}
+                >
+                  Loading...
+                </Button>
+              ) : (
+                <Button
+                  backgroundColor={"#141414"}
+                  color={"white"}
+                  className={"btn_header"}
+                  onClick={handleLogin}
+                  ml={0}
+                >
+                  Login
+                </Button>
+              )}
             </form>
           </Box>
         </Center>

@@ -3,16 +3,17 @@ import { Inter } from "next/font/google";
 import { useState } from "react"
 import { useRouter  } from "next/router";
 import { toast } from "react-toastify";
+import Link from "next/link";
 import {
   Box,
   Heading,
   Button,
   FormControl,
   FormLabel,
-  Input,
+  Input
 } from "@chakra-ui/react";
 import { Center } from "@chakra-ui/react";
-import {auth,createUserWithEmailAndPassword} from "config/firebase"
+import {auth,createUserWithEmailAndPassword,fetchSignInMethodsForEmail} from "config/firebase"
 const inter = Inter({ subsets: ["latin"] });
 
 export default function SignUp() {
@@ -26,6 +27,14 @@ export default function SignUp() {
     const handleSubmit = async () => {      
       try {
         setLoader(true);
+        if (!email || !password || !UserName) {
+          toast.error('All fields must be filled!' , {
+            position: toast.POSITION.TOP_CENTER
+           });
+           
+           return;
+        }
+
         if (password.length < 6) {
           // Show a toast message if the password is less than 6 characters
           toast.error('Password should be at least 6 characters long' , {
@@ -35,6 +44,15 @@ export default function SignUp() {
           return;
         }
        
+         // Check if email already exists
+    const methods = await fetchSignInMethodsForEmail(auth,email);
+    if (methods.length > 0) {
+      toast.error('Email already exists' , {
+       position: toast.POSITION.TOP_CENTER
+      });
+      return;
+    }
+
         await createUserWithEmailAndPassword(auth, email, password);
         console.log("User created successfully");
         router.push('/Login')
@@ -78,7 +96,13 @@ export default function SignUp() {
                 <FormLabel color="white">Password :</FormLabel>
                 <Input type="password" placeholder="**********" onChange={(e) => setPassword(e.target.value)} />
               </FormControl>
-              
+              <Box marginBottom={'5'} color={'white'}>
+              <p>Already have an account?__  
+              <Link href="/Login">
+              Login
+              </Link> 
+              </p> 
+              </Box>
               {loader ? <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} ml={0}>Loading...</Button> : <Button onClick={handleSubmit} backgroundColor={'#141414'} color={'white'} className={'btn_header'} ml={0}>
                 Sign Up
               </Button>}

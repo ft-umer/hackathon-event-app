@@ -115,8 +115,9 @@ export default function Events() {
                 {event.map((event: eventTypes) => {
                   return (
                     <tr key={event.id}>
-                      <td style={{ padding: "15px" }}>
+                      <td style={{ padding: "15px" , textAlign:"left"}}>
                         <Button
+                        backgroundColor={'black !important'}
                           variant="link"
                           color={'white'}
                           onClick={() => handleEventClick(event)}
