@@ -1,29 +1,17 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import {
   Box,
-  Flex,
   Heading,
-  Text,
   Button,
-  Icon,
-  ButtonGroup,
-  Divider,
-  Stack,
-  Grid,
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
 } from "@chakra-ui/react";
-import Link from "next/link";
 import { Center } from "@chakra-ui/react";
 import { useState } from "react"
 import { useRouter  } from "next/router";
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
 import {auth, signInWithEmailAndPassword } from "config/firebase"
-import { async } from "@firebase/util";
 import { toast } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });

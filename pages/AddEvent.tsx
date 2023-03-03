@@ -13,6 +13,7 @@ import { Center } from "@chakra-ui/react";
 import { eventTypes } from "@/types/eventTypes";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/config/firebase";
+import { toast } from "react-toastify";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function SignUp() {
@@ -25,6 +26,14 @@ export default function SignUp() {
     const [loader, setLoader] = useState(false)
 
     const onAddEvent = async() =>{
+
+      if (!title || !date || !time || !location || !description) {
+        toast.error('Please fill in all fields!' , {
+          position: toast.POSITION.TOP_CENTER
+         });
+        return;
+      }
+
         const newDoc = {
             title,
             date,
@@ -33,12 +42,16 @@ export default function SignUp() {
             description
           };
           try {
+            setLoader(true)
             const docRef = await addDoc (collection(db, "addEvent"), newDoc)
             console.log("Document written with ID: ", docRef.id);
             alert("Data Successfully added!")
             setEvent([...event, { ...newDoc, id: docRef.id }]);
           } catch (error) {
             
+          }
+          finally{
+            setLoader(false);
           }
     }
 
@@ -67,7 +80,7 @@ export default function SignUp() {
             <form>
             <FormControl id="title" mb={4}>
                 <FormLabel color="white">Title :</FormLabel>
-                <Input type="text"  onChange={(e) => setTitle(e.target.value)}/>
+                <Input type="text" placeholder={"Write a title"} onChange={(e) => setTitle(e.target.value)}/>
               </FormControl>
               <FormControl id="date" mb={4}>
                 <FormLabel color="white">Date :</FormLabel>
@@ -79,16 +92,20 @@ export default function SignUp() {
               </FormControl>
               <FormControl id="location" mb={4}>
                 <FormLabel color="white">Loaction :</FormLabel>
-                <Input type="text"  onChange={(e) => setLocation(e.target.value)}/>
+                <Input type="text" placeholder={"Location"} onChange={(e) => setLocation(e.target.value)}/>
               </FormControl>
               <FormControl id="description" mb={4}>
-                <FormLabel color="white">Description :</FormLabel>
-                <Input type="text"  onChange={(e) => setDescription(e.target.value)}/>
-              </FormControl>
+  <FormLabel color="white">Description :</FormLabel>
+  <Input type="text" height={'100px'} onChange={(e) => setDescription(e.target.value)}
+    _placeholder={{ position: 'absolute', top: '2', left: '4' }}
+    placeholder="Description"
+  />
+</FormControl>
+
               
              {loader ? <Button colorScheme="white" variant={'outline'} ml={0}>
                 Loading...
-              </Button>:<Button onClick={onAddEvent} colorScheme="white" variant={'outline'} ml={0}>
+              </Button>:<Button fontWeight={'400'} backgroundColor={'#141414'} color={'white'} className={'btn_header'} onClick={onAddEvent} ml={0}>
                 Add Event
               </Button>}
             </form>

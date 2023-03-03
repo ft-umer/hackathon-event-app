@@ -1,55 +1,12 @@
-// import { Box, Flex, Heading,Button, IconButton, Image, Spacer } from "@chakra-ui/react";
-// import Link from 'next/link';
-
-// const AppHeader=()=> {
-//   return (
-//     <Box bg={"Black"} p={"5"} color={"white"}>
-//       <Flex justifyContent="space-between">
-//       <Box>
-//         <Heading size={"lg"}>
-//           <Link rel="stylesheet" href={"/"}>
-//           <Heading className="logo">Syed's Events</Heading>
-//           </Link>
-//         </Heading>
-//       </Box>
-//       <Box>
-//         <ul className="header_list" style={{ display: "flex", listStyleType: "none", justifyContent: "flex-end", gap: "20px" }}>
-//           <li><Link rel="stylesheet" href="/Events"><Button colorScheme={"green"}>Events</Button></Link></li>
-//           <li><Link rel="stylesheet" href="#"><Button colorScheme={"blue"}>Login</Button></Link></li>
-//           <li><Link rel="stylesheet" href="#"><Button colorScheme={"orange"}>SignUp</Button></Link></li>
-//         </ul>
-//       </Box>
-//     </Flex>
-//     </Box>
-//   );
-// }
-
-// export default AppHeader;
-
 import {
   Box,
   Flex,
-  Text,
-  IconButton,
   Button,
   Stack,
-  Collapse,
-  Icon,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
   Heading,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-} from "@chakra-ui/icons";
 
 export default function AppHeader() {
   const { isOpen, onToggle } = useDisclosure();

@@ -1,23 +1,11 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import {
   Box,
-  Flex,
   Heading,
   Text,
   Button,
-  Icon,
-  ButtonGroup,
-  Divider,
-  Stack,
-  Grid,
-  FormControl,
-  FormLabel,
-  Input,
-  Checkbox,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -26,13 +14,10 @@ import {
   ModalBody,
   useDisclosure,
 } from "@chakra-ui/react";
-import Link from "next/link";
 import { Center } from "@chakra-ui/react";
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
 import { db } from "@/config/firebase";
 import { eventTypes } from "@/types/eventTypes";
 import {
-  getDoc,
   collection,
   getDocs,
   deleteDoc,
@@ -44,6 +29,7 @@ export default function Events() {
   const [event, setEvent] = useState<eventTypes[]>([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedEvent, setSelectedEvent] = useState<eventTypes | null>(null);
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     getEvents();
@@ -67,6 +53,7 @@ export default function Events() {
 
   const getEvents = async () => {
     try {
+      setLoader(true);
       const querySnapshot = await getDocs(collection(db, "addEvent"));
       let eventList: eventTypes[] = [];
       querySnapshot.forEach((doc) => {
@@ -83,6 +70,9 @@ export default function Events() {
     } catch (error) {
       console.log(error);
     }
+    finally{
+      setLoader(false);
+    }
   };
 
   const handleEventClick = (event: eventTypes) => {
@@ -96,7 +86,7 @@ export default function Events() {
         <title>Events</title>
       </Head>
 
-      <Box bg="black" height={"100vh"}>
+      <Box bg="black" minHeight={'100vh'}>
         <Center>
           <Box maxW="600px" p={4} m={6} textAlign="center">
             <Heading

@@ -1,26 +1,16 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useState } from "react"
 import { useRouter  } from "next/router";
 import { toast } from "react-toastify";
 import {
   Box,
-  Flex,
   Heading,
-  Text,
   Button,
-  Icon,
-  ButtonGroup,
-  Divider,
-  Stack,
-  Grid,
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
 } from "@chakra-ui/react";
-import Link from "next/link";
 import { Center } from "@chakra-ui/react";
 import {auth,createUserWithEmailAndPassword} from "config/firebase"
 const inter = Inter({ subsets: ["latin"] });
@@ -44,14 +34,7 @@ export default function SignUp() {
           
           return;
         }
-        if (email) {
-          toast.error('Email already exists' , {
-            position: toast.POSITION.TOP_CENTER
-           });
-           
-           return;
- 
-        } 
+       
         await createUserWithEmailAndPassword(auth, email, password);
         console.log("User created successfully");
         router.push('/Login')
@@ -85,15 +68,15 @@ export default function SignUp() {
             <form>
             <FormControl id="name" mb={4}>
                 <FormLabel color="white">Name :</FormLabel>
-                <Input type="text" onChange={(e) => setUserName(e.target.value)}/>
+                <Input type="text" placeholder="John Doe" onChange={(e) => setUserName(e.target.value)}/>
               </FormControl>
               <FormControl id="email" mb={4}>
                 <FormLabel color="white">Email :</FormLabel>
-                <Input type="email" onChange={(e) => setEmail(e.target.value)} />
+                <Input type="email" placeholder="abc@xyz.com" onChange={(e) => setEmail(e.target.value)} />
               </FormControl>
               <FormControl id="password" mb={4}>
                 <FormLabel color="white">Password :</FormLabel>
-                <Input type="password" onChange={(e) => setPassword(e.target.value)} />
+                <Input type="password" placeholder="**********" onChange={(e) => setPassword(e.target.value)} />
               </FormControl>
               
               {loader ? <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} ml={0}>Loading...</Button> : <Button onClick={handleSubmit} backgroundColor={'#141414'} color={'white'} className={'btn_header'} ml={0}>
