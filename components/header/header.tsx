@@ -1,5 +1,4 @@
 import { getAuth, signOut } from "@/config/firebase";
-import Login from "@/pages/Login";
 import {
   Box,
   Flex,
