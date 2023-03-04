@@ -32,7 +32,7 @@ export default function AppHeader() {
       }
       
   });
-  }, [isLoggedIn]);
+  }, [setIsAuthenticated, getAuth()]);
   
     const handleLogout = async () => {
      
@@ -45,7 +45,7 @@ export default function AppHeader() {
       }
       
     };
-    
+
     if (!isAuthenticated) {
       return null; // return null to avoid showing the page for a moment
     }
