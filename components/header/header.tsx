@@ -1,4 +1,4 @@
-import { getAuth, signOut } from "@/config/firebase";
+import { getAuth, onAuthStateChanged, signOut } from "@/config/firebase";
 import {
   Box,
   Flex,
@@ -9,16 +9,33 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import router, { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function AppHeader() {
   const { isOpen, onToggle } = useDisclosure();
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      try
+      {
+        if (user) {
+          setIsAuthenticated(true);
+          setIsLoggedIn(true)
+        } else {
+          setIsLoggedIn(false)
+        }
+      }catch(error){
+        console.log("error", error)
+      }
+      
+  });
+  }, [isLoggedIn]);
   
     const handleLogout = async () => {
-      try{
-        setIsLoggedIn(true)
+     
       const auth = getAuth();
       try {
         await signOut(auth);
@@ -26,11 +43,12 @@ export default function AppHeader() {
       } catch (error) {
         console.log(error);
       }
-      }finally{
-        setIsLoggedIn(false)
-      }
+      
     };
-
+    
+    if (!isAuthenticated) {
+      return null; // return null to avoid showing the page for a moment
+    }
 
   return (
     <Box bg={"black"} p={"2"} marginBottom={"1"}>
@@ -59,19 +77,19 @@ export default function AppHeader() {
             </Button>
           </Link>
 { isLoggedIn ?
+           ( <Button onClick={handleLogout} backgroundColor={'#141414'} color={'white'} className={'btn_header'} fontSize={"sm"} fontWeight={400}>
+           Logout
+         </Button>)
           
-          <Link href={"/Login"}>
-            <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'}  fontSize={"sm"} fontWeight={400}>
-              Login
-            </Button>
-          </Link>
             
             :
 
-            <Button onClick={handleLogout} backgroundColor={'#141414'} color={'white'} className={'btn_header'} fontSize={"sm"} fontWeight={400}>
-              Logout
-            </Button>
-
+          
+(<Link href={"/Login"}>
+<Button backgroundColor={'#141414'} color={'white'} className={'btn_header'}  fontSize={"sm"} fontWeight={400}>
+  Login
+</Button>
+</Link>)
  }       
         </Stack>
       </Flex>
