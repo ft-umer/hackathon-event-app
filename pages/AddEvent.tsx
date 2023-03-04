@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {
   Box,
   Heading,
@@ -12,11 +12,12 @@ import {
 import { Center } from "@chakra-ui/react";
 import { eventTypes } from "@/types/eventTypes";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "@/config/firebase";
+import { db, getAuth, onAuthStateChanged } from "@/config/firebase";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function SignUp() {
+export default function addEvent() {
     const [event, setEvent] = useState<eventTypes[]>([])
     const [title, setTitle] = useState<string>("")
     const [date, setDate] = useState<string>("")
@@ -24,6 +25,25 @@ export default function SignUp() {
     const [location, setLocation] = useState<string>("")
     const [description, setDescription] = useState<string>("")
     const [loader, setLoader] = useState(false)
+    const router = useRouter();
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
+   
+    useEffect(() => {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        try{
+          if (user) {
+            setIsAuthenticated(true);
+            setLoader(true)
+          } else {
+            router.push('/Login'); // redirect to login page if user is not logged in
+          }
+        }
+        finally{
+          setLoader(false)
+        }
+      });
+    }, []);
 
     const onAddEvent = async() =>{
 
@@ -55,12 +75,14 @@ export default function SignUp() {
           }
     }
 
-
+ if (!isAuthenticated) {
+      return null; // return null to avoid showing the page for a moment
+    }
 
   return (
     <>  
       <Head>
-        <title>Sign Up</title>
+        <title>Add Events</title>
       </Head>
 
       <Box bg="black">

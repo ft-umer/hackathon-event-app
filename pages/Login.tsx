@@ -22,13 +22,15 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [loader, setLoader] = useState(false);
   const router = useRouter();
+  
 
   const handleLogin = async () => {
     try {
       setLoader(true);
       await signInWithEmailAndPassword(auth, email, password);
       console.log("User LoggedIn successfully");
-      router.push("/");
+      // setIsLoggedIn(true);
+      router.push("/AddEvent");
     } catch (error) {
       console.log(error);
       toast.error("Invalid email or password", {
