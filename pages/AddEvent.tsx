@@ -85,7 +85,7 @@ export default function AddEvent() {
         <title>Add Events</title>
       </Head>
 
-      <Box bg="black">
+      <Box bg="black" minHeight={'100vh'}>
         <Center>
           <Box maxW="600px" p={4} m={6} textAlign="center">
             <Heading
