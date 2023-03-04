@@ -17,7 +17,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function addEvent() {
+export default function AddEvent() {
     const [event, setEvent] = useState<eventTypes[]>([])
     const [title, setTitle] = useState<string>("")
     const [date, setDate] = useState<string>("")
