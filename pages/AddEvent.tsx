@@ -125,11 +125,22 @@ export default function addEvent() {
 </FormControl>
 
               
-             {loader ? <Button colorScheme="white" variant={'outline'} ml={0}>
-                Loading...
-              </Button>:<Button fontWeight={'400'} backgroundColor={'#141414'} color={'white'} className={'btn_header'} onClick={onAddEvent} ml={0}>
-                Add Event
-              </Button>}
+{loader ? (
+  <Button colorScheme="white" variant="outline" ml={0}>
+    Loading...
+  </Button>
+) : (
+  <Button
+    fontWeight="400"
+    backgroundColor="#141414"
+    color="white"
+    className="btn_header"
+    onClick={onAddEvent}
+    ml={0}
+  >
+    Add Event
+  </Button>
+)}
             </form>
           </Box>
         </Center>
