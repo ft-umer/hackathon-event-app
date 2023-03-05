@@ -46,13 +46,13 @@ export default function Login() {
         <title>Login</title>
       </Head>
 
-      <Box bg="black" height={"100vh"}>
+      <Box bg="black" minHeight={"100vh"}>
         <Center>
           <Box maxW="600px" p={4} m={6} textAlign="center">
             <Heading
               py={{ base: "10" }}
               as="h1"
-              size="3xl"
+              size="3x1"
               fontFamily="heading"
               fontWeight="bold"
               mb={6}

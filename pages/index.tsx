@@ -22,38 +22,38 @@ export default function Home() {
         <title>My Event App</title>
       </Head>
 
-      <Box bg="black" color="white" py={{ base: "10", md: "20" }}>
+      <Box bg="black" color="white" py={{ base: "6", md: "20" }}>
         <Center>
           <Box maxW="600px" padding={"4px"} margin={"6px"} textAlign="center">
             <Heading
               as="h1"
-              size="3xl"
+              size={{ base: "xl", md: "3xl" }}
               fontFamily="heading"
               fontWeight="bold"
-              mb="6"
+              mb="4"
             >
               Syed's Event App
             </Heading>
-            <Text fontSize="lg" mb="10">
+            <Text fontSize={{ base: "md", md: "lg" }} mb="6">
               The easiest way to create, manage, and track your events.
             </Text> 
             <Link href={'/AddEvent'}>
-            <Button colorScheme="white" size="lg" variant="outline">
-              Add Events
-            </Button>
+              <Button colorScheme="white" size={{ base: "sm", md: "lg" }} variant="outline">
+                Add Events
+              </Button>
             </Link>         
           </Box>
         </Center>
       </Box>
 
-      <Box bg={"black"} padding={"4"} marginBottom={"1"} marginTop={"1"}>
+      <Box bg={"black"} padding={"2"} marginBottom={"1"} marginTop={"1"}>
         
         <Flex
           justifyContent="center"
           alignItems="center"
           flexDir={{ base: "column", md: "row" }}
         >
-          <Grid templateColumns={["repeat(2, 1fr)"]} gap={6}>
+          <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }} gap={6}>
             <Card
               className={"card_hover"}
               maxW="xl"
@@ -136,18 +136,18 @@ Some key tasks involved in managing events include setting a budget, securing a 
           <Box maxW="600px" padding={"4px"} margin={"6px"} textAlign="center">
             <Heading
               as="h2"
-              size="2xl"
+              size={{ base: "xl", md: "3xl" }}
               fontFamily="heading"
               fontWeight="bold"
               mb="6"
             >
               Get started today
             </Heading>
-            <Text fontSize="xl" mb="10">
+            <Text fontSize={{ base: "md", md: "lg" }}>
               Sign up now and start creating your first event in minutes.
             </Text>
             <Link href={'/SignUp'}>
-            <Button colorScheme="white" size="lg" variant="outline">
+            <Button colorScheme="white" size={{ base: "sm", md: "lg" }} marginTop={'5'} variant="outline">
               Sign Up
             </Button>
             </Link>

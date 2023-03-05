@@ -19,19 +19,17 @@ export default function AppHeader() {
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-      try
-      {
+      try {
         if (user) {
           setIsAuthenticated(true);
-          setIsLoggedIn(true)
+          setIsLoggedIn(true);
         } else {
-          setIsLoggedIn(false)
+          setIsLoggedIn(false);
         }
-      }catch(error){
-        console.log("error", error)
+      } catch (error) {
+        console.log("error", error);
       }
-      
-  });
+    });
   }, [setIsAuthenticated, getAuth()]);
   
     const handleLogout = async () => {
@@ -46,15 +44,15 @@ export default function AppHeader() {
       
     };
 
-    if (!isAuthenticated) {
-      return null; // return null to avoid showing the page for a moment
-    }
+//     if (!isAuthenticated) {
+//       return null; // return null to avoid showing the page for a moment
+//     }
 
   return (
     <Box bg={"black"} p={"2"} marginBottom={"1"}>
       <Flex py={{ base: 2 }} px={{ base: 4 }} align={"center"}>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Heading color={'white'}>
+          <Heading color={'white'} size={{ base: "md", md: "lg" }}>
             <Link href="/">Syed's Event</Link>
           </Heading>
         </Flex>
@@ -66,18 +64,18 @@ export default function AppHeader() {
           spacing={6}
         >
           <Link href="/Events">
-            <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} fontSize={"sm"} fontWeight={400}>
+            <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} size={{ base: "sm", md: "md" }} fontWeight={400}>
               Events
             </Button>
           </Link>
 
           <Link href={"/SignUp"}>
-            <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} fontSize={"sm"} fontWeight={400}>
+            <Button backgroundColor={'#141414'} color={'white'} className={'btn_header'} size={{ base: "sm", md: "md" }} fontWeight={400}>
               Sign Up
             </Button>
           </Link>
 { isLoggedIn ?
-           ( <Button onClick={handleLogout} backgroundColor={'#141414'} color={'white'} className={'btn_header'} fontSize={"sm"} fontWeight={400}>
+           ( <Button onClick={handleLogout} backgroundColor={'#141414'} color={'white'} className={'btn_header'} size={{ base: "sm", md: "md" }} fontWeight={400}>
            Logout
          </Button>)
           
@@ -86,7 +84,7 @@ export default function AppHeader() {
 
           
 (<Link href={"/Login"}>
-<Button backgroundColor={'#141414'} color={'white'} className={'btn_header'}  fontSize={"sm"} fontWeight={400}>
+<Button backgroundColor={'#141414'} color={'white'} className={'btn_header'}  size={{ base: "sm", md: "md" }} fontWeight={400}>
   Login
 </Button>
 </Link>)
@@ -97,4 +95,3 @@ export default function AppHeader() {
     </Box>
   );
 }
-
