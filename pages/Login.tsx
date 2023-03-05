@@ -52,7 +52,7 @@ export default function Login() {
             <Heading
               py={{ base: "10" }}
               as="h1"
-              size="3x1"
+              size={{ base: "xl", md: "3xl" }}
               fontFamily="heading"
               fontWeight="bold"
               mb={6}
