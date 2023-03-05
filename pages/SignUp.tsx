@@ -72,10 +72,10 @@ export default function SignUp() {
       <Box bg="black">
         <Center>
           <Box maxW="600px" p={4} m={6} textAlign="center">
-            <Heading
-            py={{ base: "10" }}
+               <Heading
+              py={{ base: "10" }}
               as="h1"
-              size="3xl"
+              size={{ base: "xl", md: "3xl" }}
               fontFamily="heading"
               fontWeight="bold"
               mb={6}
