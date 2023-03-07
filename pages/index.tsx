@@ -32,7 +32,7 @@ export default function Home() {
               fontWeight="bold"
               mb="4"
             >
-              Syed's Event App
+              Syed's Event
             </Heading>
             <Text fontSize={{ base: "md", md: "lg" }} mb="6">
               The easiest way to create, manage, and track your events.
