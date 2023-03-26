@@ -15,7 +15,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { Center } from "@chakra-ui/react";
-import { db } from "@/config/firebase";
+import { db, getAuth, onAuthStateChanged } from "@/config/firebase";
 import { eventTypes } from "@/types/eventTypes";
 import {
   collection,
@@ -23,6 +23,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import router from "next/router";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Events() {
@@ -30,6 +31,24 @@ export default function Events() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedEvent, setSelectedEvent] = useState<eventTypes | null>(null);
   const [loader, setLoader] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+   
+    useEffect(() => {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        try{
+          if (user) {
+            setIsAuthenticated(true);
+            setLoader(true)
+          } else {
+            router.push('/Events'); // redirect to login page if user is not logged in
+          }
+        }
+        finally{
+          setLoader(false)
+        }
+      });
+    }, [router]);
 
   useEffect(() => {
     getEvents();
@@ -120,7 +139,7 @@ export default function Events() {
                         backgroundColor={'black !important'}
                           variant="link"
                           color={'white'}
-                          onClick={() => handleEventClick(event)}
+                          
                         >
                           <Heading
                             size={"xl"}
@@ -139,13 +158,20 @@ export default function Events() {
                         </Button>
                       </td>
                       <td style={{ padding: "15px" }}>
-                        <Button fontWeight={'400'} backgroundColor={'#141414'} color={'white'} className={'btn_header'} onClick={() => eventDeleteHandler(event)}>
-                          Delete
-                        </Button>
+                      {isAuthenticated ? <Button fontWeight={'400'} backgroundColor={'#141414'} color={'white'} className={'btn_header'} onClick={() => handleEventClick(event)}>
+                          View
+                        </Button> : ""}
                       </td>
                       <td style={{ padding: "15px" }}>
-                        <Button fontWeight={'400'} backgroundColor={'#141414'} color={'white'} className={'btn_header'}>Update</Button>
+                        {isAuthenticated ? <Button fontWeight={'400'} backgroundColor={'#141414'} color={'white'} className={'btn_header'} onClick={() => eventDeleteHandler(event)}>
+                          Delete
+                        </Button> : <Button fontWeight={'400'} backgroundColor={'#141414'} color={'white'} className={'btn_header'} onClick={() => handleEventClick(event)}>
+                          View
+                        </Button>}
                       </td>
+                      {isAuthenticated ? <td style={{ padding: "15px" }}>
+                        <Button fontWeight={'400'} backgroundColor={'#141414'} color={'white'} className={'btn_header'}>Update</Button>
+                      </td> : ""}
                     </tr>
                   );
                 })}

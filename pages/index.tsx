@@ -8,14 +8,17 @@ import {
   Button,
   Stack,
   Grid,
+  Input,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { Center } from "@chakra-ui/react";
 import { Card, CardBody } from "@chakra-ui/react";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState("");
   return (
     <>
       <Head>
@@ -37,6 +40,25 @@ export default function Home() {
             <Text fontSize={{ base: "md", md: "lg" }} mb="6">
               The easiest way to create, manage, and track your events.
             </Text> 
+            <Flex alignItems="center" marginBottom={'5'}>
+        <Input
+          placeholder="Search Events"
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+          mr={2}
+        />
+        <Button
+          colorScheme="white"
+          size={{ base: "sm", md: "md" }}
+          variant="outline"
+          onClick={() => {
+            // Call a search function with the searchQuery state
+            console.log("Searching for:", searchQuery);
+          }}
+        >
+          Search
+        </Button>
+      </Flex>
             <Link href={'/AddEvent'}>
               <Button colorScheme="white" size={{ base: "sm", md: "lg" }} variant="outline">
                 Add Events
